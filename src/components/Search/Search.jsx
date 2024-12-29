@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Search.module.css";
 import { ReactComponent as SearchIcon } from "../../assets/search-icon.svg";
-import { useAutocomplete } from "@mui/base";  // Named import
+import { useAutocomplete } from "@mui/base"; 
 import { styled } from "@mui/system";
 import { truncate } from "../../helpers/helpers";
 import { useNavigate } from "react-router-dom";
@@ -43,7 +43,7 @@ function Search({ searchData, placeholder }) {
     value,
     getListboxProps,
     getOptionProps,
-    groupedOptions = [],  // Fallback to empty array
+    groupedOptions = [],  
   } = useAutocomplete({
     id: "use-autocomplete-demo",
     options: searchData || [],
@@ -54,7 +54,7 @@ function Search({ searchData, placeholder }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // Ensure 'value' is correctly formatted
+    
     if (value?.slug) {
       navigate(`/album/${value.slug}`);
     }
@@ -90,7 +90,7 @@ function Search({ searchData, placeholder }) {
               <li
                 className={styles.listElement}
                 {...getOptionProps({ option, index })}
-                key={option.slug}  // Add key for better performance
+                key={option.slug}  
               >
                 <div>
                   <p className={styles.albumTitle}>{option.title}</p>
@@ -103,11 +103,10 @@ function Search({ searchData, placeholder }) {
           })}
         </Listbox>
       ) : (
-        <div className={styles.noResults}>No results found</div>  // Display if no results found
+        <div className={styles.noResults}>No results found</div>  
       )}
     </div>
   );
 }
 
 export default Search;
-  
